@@ -8,18 +8,4 @@ import { Component } from '@angular/core';
 export class Component2Component {
 
 constructor(){ }
-numero:any=0;
-
-sueldos=[1700, 1600, 1900, 1880, 2000, 4555];
-ngOnInit():void{
-   localStorage.clear()
-  this.numero=30;
-  
-}
-
-almacenar()
-{
-  localStorage.setItem('valor_total', this.numero)
-  localStorage.setItem('mensaje', 'almacenado')
-}
 }
