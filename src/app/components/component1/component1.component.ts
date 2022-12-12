@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 
 //import { CartService } from '../cart.service';
@@ -9,13 +9,13 @@ import { FormBuilder } from '@angular/forms';
   styleUrls: ['./component1.component.css']
   
 })
-export class Component1Component implements OnInit {
+export class Component1Component{
   items: any;
   checkoutForm;
   cartService: any;
 
   constructor(
-    //private cartService: CartService,
+
     private formBuilder: FormBuilder,
   ) {
     this.checkoutForm = this.formBuilder.group({
