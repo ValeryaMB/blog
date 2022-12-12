@@ -1,21 +1,20 @@
-import { Component } from '@angular/core';
+
+import { Component} from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 
-//import { CartService } from '../cart.service';
+
 
 @Component({
   selector: 'app-component1',
   templateUrl: './component1.component.html',
   styleUrls: ['./component1.component.css']
-  
 })
-export class Component1Component{
+export class ComponentComponent {
   items: any;
   checkoutForm;
   cartService: any;
 
   constructor(
-
     private formBuilder: FormBuilder,
   ) {
     this.checkoutForm = this.formBuilder.group({
