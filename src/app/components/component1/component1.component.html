@@ -1,18 +1,31 @@
 <p>component1 works!</p>
-<h1>Ingrese numero</h1>
-<input [(ngModel)]="numero" />
-<br />
-<strong *ngIf="numero > 3"> El numero es mayor a 3</strong>
-<p *ngIf="numero == 3"> El numero es 3</p>
-<strong *ngIf="numero < 3 || numero !='' ">{{ numero }}, El numero es meor que 3</strong>
-<p></p>
-<tr *ngFor="let sueldo of sueldos">
-<td>{{sueldo}}</td>    
-</tr>
-<ul *ngFor="let sueldo of sueldos">
-    <li>{{sueldo}}</li>
-</ul>
-<div *ngFor="let sueldo of sueldos">
-    <div> Sueldo: {{sueldo}}</div>
+<h3>Cart</h3>
+
+<p>
+  <a routerLink="/shipping">Shipping Prices</a>
+</p>
+
+<div class="cart-item" *ngFor="let item of items">
+  <span>{{ item.name }} </span>
+  <span>{{ item.price | currency }}</span>
 </div>
-<button (click)="almacenar()">Almacenar</button>
+
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
+
+  <div>
+    <label for="name">
+      Name
+    </label>
+    <input id="name" type="text" formControlName="name">
+  </div>
+
+  <div>
+    <label for="address">
+      Address
+    </label>
+    <input id="address" type="text" formControlName="address">
+  </div>
+
+  <button class="button" type="submit">Purchase</button>
+
+</form>

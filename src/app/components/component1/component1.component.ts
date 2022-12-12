@@ -1,26 +1,38 @@
 import { Component, OnInit } from '@angular/core';
-import { Route } from '@angular/router';
+import { FormBuilder } from '@angular/forms';
+
+//import { CartService } from '../cart.service';
+
 @Component({
   selector: 'app-component1',
   templateUrl: './component1.component.html',
   styleUrls: ['./component1.component.css']
+  
 })
 export class Component1Component implements OnInit {
-constructor(private router: Route){ }
+  items: any;
+  checkoutForm;
+  cartService: any;
 
-numero:any=0;
+  constructor(
+    //private cartService: CartService,
+    private formBuilder: FormBuilder,
+  ) {
+    this.checkoutForm = this.formBuilder.group({
+      name: '',
+      address: ''
+    });
+  }
 
-sueldos=[1700, 1600, 1900, 1880, 2000, 4555];
+  ngOnInit() {
+    this.items = this.cartService.getItems();
+  }
 
-ngOnInit():void{
-  localStorage.clear()
-  this.numero=30;
-  
-}
+  onSubmit(customerData: any) {
+    // Process checkout data here
+    this.items = this.cartService.clearCart();
+    this.checkoutForm.reset();
 
-almacenar()
-{
-  localStorage.setItem('valor_total', this.numero)
-  localStorage.setItem('mensaje', 'almacenado')
-}
+    console.warn('Your order has been submitted', customerData);
+  }
 }
